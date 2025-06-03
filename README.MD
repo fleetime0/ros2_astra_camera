@@ -12,7 +12,7 @@
 
 ```bash
 sudo apt install libgflags-dev nlohmann-json3-dev \
-ros-galactic-image-transport ros-galactic-image-publisher
+ros-$ROS_DISTRO-image-transport ros-$ROS_DISTRO-image-publisher
 ```
 
 ● Install glog
@@ -30,10 +30,10 @@ sudo ldconfig  # Refreshing the link library
 ● Install magic_enum
 
 ```bash
-wget -c https://github.com/Neargye/magic_enum/archive/refs/tags/v0.8.0.tar.gz -O  magic_enum-0.8.0.tar.gz
+wget -c https://github.com/Neargye/magic_enum/archive/refs/tags/v0.9.0.tar.gz -O  magic_enum-0.9.0.tar.gz
 
-tar -xzvf magic_enum-0.8.0.tar.gz
-cd magic_enum-0.8.0
+tar -xzvf magic_enum-0.9.0.tar.gz
+cd magic_enum-0.9.0
 mkdir build && cd build
 cmake .. && make -j4
 sudo make install
@@ -74,7 +74,7 @@ sudo udevadm control --reload-rules && sudo udevadm trigger
 
 ```bash
  cd ~/ros2_ws
-source /opt/ros/galactic/setup.bash 
+source /opt/ros/$ROS_DISTRO/setup.bash
 colcon build --event-handlers  console_direct+  --cmake-args  -DCMAKE_BUILD_TYPE=Release
 ```
 
@@ -83,7 +83,7 @@ Starting the camera
 ● In terminal 1
 
 ```bash
-source /opt/ros/galactic/setup.bash 
+source /opt/ros/$ROS_DISTRO/setup.bash 
 source ./install/setup.bash 
 ros2 launch astra_camera astra_mini.launch.py
 ```
@@ -91,7 +91,7 @@ ros2 launch astra_camera astra_mini.launch.py
 ● In terminal 2
 
 ```bash
-source /opt/ros/galactic/setup.bash 
+source /opt/ros/$ROS_DISTRO/setup.bash 
 source ./install/setup.bash 
 rviz2 -d src/ros2_astra_camera/astra_camera/rviz/pointcloud.rviz
 ```
@@ -99,7 +99,7 @@ rviz2 -d src/ros2_astra_camera/astra_camera/rviz/pointcloud.rviz
 ● List topics / services/ parameters (open a new terminal)
 
 ```bash
-source /opt/ros/galactic/setup.bash 
+source /opt/ros/$ROS_DISTRO/setup.bash 
 ros2 topic list
 ros2 service list
 ros2 param list
